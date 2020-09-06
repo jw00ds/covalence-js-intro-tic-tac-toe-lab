@@ -1,0 +1,31 @@
+#board {
+    padding-top: 3em;
+    text-align: center;
+}
+.row > div {
+    float: left;
+    height: 100px;
+    width: 100px;
+}
+.clearFix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.row {
+    margin: 0 auto;
+    width: 302px;
+    cursor: pointer;
+}
+.top {
+    border-bottom: 1px black solid;
+}
+.bottom {
+    border-top: 1px black solid;
+}
+.left {
+    border-right: 1px black solid;
+}
+.right {
+    border-left: 1px black solid;
+}

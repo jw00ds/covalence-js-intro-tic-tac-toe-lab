@@ -109,5 +109,5 @@ function checkIfThreeInARow() {
 }
 
 function restartGame() {
-    // ^Haven't figured out how to address this yet...I know operationally it needs to: 1) clear the text content of all the divs; 2) currentPlayer needs to be defaulted back to X (no matter whose turn happened most recently); 3) only be possible/allowed when moveCounter fn's value > 8; & 4) be initiated by a click anywhere on the board...
+    // ^Haven't figured out how to address this yet...I know operationally it needs to: 1) clear the text content of all the divs; 2) currentPlayer needs to be defaulted back to X (no matter whose turn happened most recently); 3) this fn needs to only be possible/allowed when moveCounter fn's value > 8; & 4) be initiated by a click anywhere on the board...
 }

@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="styles.css">
-    </head>
 
-    <body>
-        <div id="board">
-            <h1>Tic Tac Toe</h1>
-            <div class="row" class="clearFix">
-                <div class="top left">a</div>
-                <div class="top middle">b</div>
-                <div class="top right">c</div>
-            </div>
-            <div class="row" class="clearFix">
-                <div class="middle left">d</div>
-                <div class="center">e</div>
-                <div class="middle right">f</div>
-            </div>
-            <div class="row" class="clearFix">
-                <div class="bottom left">g</div>
-                <div class="bottom middle">h</div>
-                <div class="bottom right">i</div>
-            </div>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="board">
+        <h1>Tic Tac Toe</h1>
+        <h2 class="gameStatus"></h2>
+        <div class="row clearFix">
+            <div class="top left cell"></div>
+            <div class="top middle cell"></div>
+            <div class="top right cell"></div>
         </div>
-        <script src="app.js"></script>
-    </body>
+        <div class="row" class="clearFix">
+            <div class="middle left cell"></div>
+            <div class="center cell"></div>
+            <div class="middle right cell"></div>
+        </div>
+        <div class="row clearFix">
+            <div class="bottom left cell"></div>
+            <div class="bottom middle cell"></div>
+            <div class="bottom right cell"></div>
+        </div>
+    </div>
+<script src="app.js"></script>
+</body>
+
 </html>

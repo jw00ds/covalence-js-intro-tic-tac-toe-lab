@@ -122,15 +122,15 @@ checkIfThreeInARow()
 //^exe Really struggling to understand when you include parentheses on the end of a fn vs when not to, as well as what parameters, if any - to put inside them / when to include them but leave () contents empty...
 
 function checkIfThreeInARow() {
-    let winQuery1;
-    let winQuery2;
-    let winQuery3;
+    let winCellQuery1;
+    let winCellQuery2;
+    let winCellQuery3;
     for (var winSet of arrayOfPotentialWinCombinations) {
-        winQuery1 = document.querySelector(winSet[0]).textContent;
-        winQuery2 = document.querySelector(winSet[1]).textContent;
-        winQuery3 = document.querySelector(winSet[2]).textContent;
-        // console.log(winQuery1 === winQuery2 === winQuery3)
-        if (winQuery1 === winQuery2 === winQuery3) {
+        winCellQuery1 = document.querySelector(winSet[0]).textContent;
+        winCellQuery2 = document.querySelector(winSet[1]).textContent;
+        winCellQuery3 = document.querySelector(winSet[2]).textContent;
+        // console.log(winCellQuery1 === winCellQuery2 === winCellQuery3)
+        if (winCellQuery1 === winCellQuery2 === winCellQuery3) {
             return true;
         }
     }
@@ -142,10 +142,3 @@ function restartGame() {
         addEventListener("click", window.location.reload());
     }
 }
-//^Haven't figured out how to address this yet...I know operationally it needs to: 1) clear the text content of all the divs; 2) currentPlayer needs to be defaulted back to X (no matter whose turn happened most recently); 3) this fn needs to only be possible/allowed when moveCounter fn's value > 8; & 4) be initiated by a click anywhere on the board...
-
-
-//QUESTIONS STILL AS OF 9/8 5PM:
-//1. Why error on that return fn in line 95?
-//2. How to store data for move counter?
-//3. How to get winning/draw msg to display when condition is met? Do you have to put some kind of placeholder in the CSS or can this all be done in JS?

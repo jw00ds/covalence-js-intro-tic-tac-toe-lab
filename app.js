@@ -36,7 +36,7 @@
 
 
 let showGameStatus = document.querySelector(".gameStatus");
-// ^Need to figure out how get this to connect w/ the CSS for the html h2 so it'll dynamically display conditionally based upon the result of finalGameMsg fns from lines 51:60 below & hide display when those conditions aren't met...
+// ^Need to figure out how get this to connect w/ the CSS for the html h2 so it'll dynamically display conditionally based upon the result of finalGameMsg fns from lines below & hide display when those conditions aren't met...
 
 let gameActive = true;
 
@@ -44,8 +44,13 @@ let currentPlayer = "X"
 
 // let gameState = [somehow store states,,,,,] - Haven't figured out conceptually how to do this yet (store states iteratively kind of archiving the result into a tbl or something...)...but I feel pretty confident this is doable.
 // Thinking that rather than ^, could accomplish same need via just keeping track of how many moves there've been via a counter fn that increments up by 1 via ++ (fn to increase moveCounter++)...
-function moveCounter() {
-    // ^Know this needs to incl. "++" but that's as far as I've gotten...
+
+let moveCounter = 0 {
+    function moveCounterFunction() {
+        document.addEventListener("click")
+        moveCounter++
+        // ^Know this needs to incl. "++" & .addEventListener but that's as far as I've gotten...
+    }
 }
 
 function finalGameMessageWin() {
@@ -87,7 +92,7 @@ const arrayOfPotentialWinCombinations = [
     [".top.right", ".middle.right", ".bottom.right"], 
     [".top.left", ".center", ".bottom.right"], 
     [".bottom.left", ".center", ".top.right"]
-];
+]; // ^Remember, these CSS classes (to isolate/target the divs) have to be stored in the array as a string/text vals.
 
 checkIfThreeInARow()
 // ^exe Really struggling to understand when you include parentheses on the end of a fn vs when not to, as well as what parameters, if any - to put inside them / when to include them but leave () contents empty...
@@ -109,5 +114,8 @@ function checkIfThreeInARow() {
 }
 
 function restartGame() {
+    if (moveCounter > 8) {
+        addEventListener("click", window.location.reload());
+    }
     // ^Haven't figured out how to address this yet...I know operationally it needs to: 1) clear the text content of all the divs; 2) currentPlayer needs to be defaulted back to X (no matter whose turn happened most recently); 3) this fn needs to only be possible/allowed when moveCounter fn's value > 8; & 4) be initiated by a click anywhere on the board...
 }

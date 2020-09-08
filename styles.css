@@ -17,6 +17,9 @@
     width: 302px;
     cursor: pointer;
     font-size: 100%;
+    clear: both;
+    line-height: 100px;
+    font-size: 50px;
 }
 .top {
     border-bottom: 1px black solid;
@@ -30,11 +33,3 @@
 .right {
     border-left: 1px black solid;
 }
-/*
-.gameStatus1 {
-    put something in here
-}
-.gameStatus2 {
-    put something else in here
-}
-*/

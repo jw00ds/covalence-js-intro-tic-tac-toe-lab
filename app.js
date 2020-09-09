@@ -44,23 +44,14 @@ let currentPlayer = "X";
 //let gameState = [somehow store states,,,,,] - Haven't figured out conceptually how to do this yet (store states iteratively kind of archiving the result into a tbl or something...)...but I feel pretty confident this is doable.
 //Thinking that rather than ^, could accomplish same need via just keeping track of how many moves there've been via a counter fn that increments up by 1 via ++ (fn to increase moveCounter++)...
 
-// let moveCounter = 0 {
-//     function moveCounterFunction() {
-//         document.addEventListener("click")
-//         moveCounter++
-//         //^Know this needs to incl. "++" & .addEventListener but that's as far as I've gotten...
-//     }
-// }
+let moveCounter = 0;
 
 function finalGameMessageWin() {
     if (checkIfThreeInARow() === true) {
-        return "Player " + currentPlayer + " wins!";
+        showGameStatus.textContent = "Player " + currentPlayer + " wins!";
+    } else if(checkIfThreeInARow() === false && moveCounter > 8) {
+        showGameStatus.textContent = "Draw";
     }
-}
-
-function finalGameMessageDraw() {
-    if (checkIfThreeInARow() === false && moveCounter > 8)
-    return "Draw";
 }
 
 let ticCells = document.querySelectorAll(".cell")
@@ -70,16 +61,22 @@ for (var ticCell of ticCells) {
 }
 
 //Make correct player's marker place text in cell clicked
-function handleCellPlayed(e1) {
-    return event.target.textContent = currentPlayer;
-}
-
-function endGame(e2) {
-    //Catch if game is over
-    if (gameActive === true) {
+function handleCellPlayed(e) {
+    if (e.target.textContent !== "") {
         return;
     }
+    e.target.textContent = currentPlayer;
+    moveCounter++;
+    checkIfThreeInARow();
+    finalGameMessageWin();
 }
+
+// function endGame(e2) {
+//     //Catch if game is over
+//     if (gameActive === true) {
+//         return;
+//     }
+// }
 
 //Make marker toggle to X or O appropriately
 function handlePlayerChange() {
@@ -90,36 +87,27 @@ function handlePlayerChange() {
     }
 }
 
-//Catch & prevent cheating
-if (e2.target.textContent !== "") {
-    return;
-}
-//^When I run the code, it gives me an error for the return line above, saying "illegal return statment"
-
-const arrayOfPotentialWinCombinations = [
-    [cell[0], cell[1], cell[2]], 
-    [cell[3], cell[4], cell[5]], 
-    [cell[6], cell[7], cell[8]], 
-    [cell[0], cell[3], cell[6]], 
-    [cell[1], cell[4], cell[7]], 
-    [cell[2], cell[5], cell[8]], 
-    [cell[0], cell[4], cell[8]], 
-    [cell[6], cell[4], cell[2]]
-];
 // const arrayOfPotentialWinCombinations = [
-//     [".top.left", ".top.middle", ".top.right"], 
-//     [".middle.left", ".center", ".middle.right"], 
-//     [".bottom.left", ".bottom.middle", ".bottom.right"], 
-//     [".top.left", ".middle.left", ".bottom.left"], 
-//     [".middle.top", ".center", ".middle.bottom"], 
-//     [".top.right", ".middle.right", ".bottom.right"], 
-//     [".top.left", ".center", ".bottom.right"], 
-//     [".bottom.left", ".center", ".top.right"]
+//     [cell[0], cell[1], cell[2]],
+//     [cell[3], cell[4], cell[5]],
+//     [cell[6], cell[7], cell[8]],
+//     [cell[0], cell[3], cell[6]],
+//     [cell[1], cell[4], cell[7]],
+//     [cell[2], cell[5], cell[8]],
+//     [cell[0], cell[4], cell[8]],
+//     [cell[6], cell[4], cell[2]]
 // ];
+const arrayOfPotentialWinCombinations = [
+    [".top.left", ".top.middle", ".top.right"], 
+    [".middle.left", ".center", ".middle.right"], 
+    [".bottom.left", ".bottom.middle", ".bottom.right"], 
+    [".top.left", ".middle.left", ".bottom.left"], 
+    [".middle.top", ".center", ".middle.bottom"], 
+    [".top.right", ".middle.right", ".bottom.right"], 
+    [".top.left", ".center", ".bottom.right"], 
+    [".bottom.left", ".center", ".top.right"]
+];
 //^Remember, these CSS classes (to isolate/target the divs) have to be stored in the array as a string/text vals.
-
-checkIfThreeInARow()
-//^exe Really struggling to understand when you include parentheses on the end of a fn vs when not to, as well as what parameters, if any - to put inside them / when to include them but leave () contents empty...
 
 function checkIfThreeInARow() {
     let winCellQuery1;
@@ -129,8 +117,8 @@ function checkIfThreeInARow() {
         winCellQuery1 = document.querySelector(winSet[0]).textContent;
         winCellQuery2 = document.querySelector(winSet[1]).textContent;
         winCellQuery3 = document.querySelector(winSet[2]).textContent;
-        // console.log(winCellQuery1 === winCellQuery2 === winCellQuery3)
-        if (winCellQuery1 === winCellQuery2 === winCellQuery3) {
+        // console.log(winCellQuery1 === winCellQuery2 === winCellQuery3);
+        if (winCellQuery1 === winCellQuery2 && winCellQuery2 === winCellQuery3 && winCellQuery1 !== "") {
             return true;
         }
     }
